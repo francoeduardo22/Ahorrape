@@ -24,21 +24,21 @@
     <string name="regChkTerminos">Terminos y condiciones</string>
     <string name="regBtnCrear">Crear</string>
     <string name="regBtnRegresar">Regresar</string>
-    <string name="txtSaldo">S/ 1,250.00</string>
-    <string name="txtIngresos">S/ 2,500.00</string>
-    <string name="txtGastos">S/ 1,250.00</string>
+    <string name="txtSaldo">S/ 1250.00</string>
+    <string name="txtIngresos">S/ 2500.00</string>
+    <string name="txtGastos">S/ 1250.00</string>
     <string name="txtPorcentaje">60%</string>
-    <string name="txtInicio">S/600</string>
-    <string name="txtFinal">S/1,000</string>
+    <string name="txtInicio">S/600.00</string>
+    <string name="txtFinal">S/1000.00</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="RegGasBtnGasto">Gasto</string>
     <string name="RegGasBtnIngreso">Ingreso</string>
     <string name="txRegistroGastos">S/150.00</string>
     <string name="RegGasBtnRegistrarGasto">Registrar Gasto</string>
-    <string name="txRegistroIngresos">S/1,000.00</string>
+    <string name="txRegistroIngresos">S/1000.00</string>
     <string name="RegGasBtnRegistrarIngreso">Registrar Ingreso</string>
-    <string name="txtResumenAhorros">S/1,250</string>
+    <string name="txtResumenAhorros">S/1250.00</string>
     <string name="BtnCrearNuevaMeta">+ Crear Nueva Meta</string>
     <string name="inicio">Inicio</string>
     <string name="metas">Metas</string>
@@ -46,4 +46,6 @@
     <string name="historial">historial</string>
     <string name="abrir_metas">+</string>
     <string name="txtLblPreferencias">Preferencias</string>
+    <string name="bieLblSaludo">Bienvenido</string>
+    <string name="Progreso_perol">35% de la academia completada</string>
 </resources>

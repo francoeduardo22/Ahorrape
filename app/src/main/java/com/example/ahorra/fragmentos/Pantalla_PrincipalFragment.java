@@ -1,30 +1,21 @@
 package com.example.ahorra.fragmentos;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
-import android.util.Log;
-import android.widget.ImageButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Bundle;
 
 import com.example.ahorra.R;
-import com.example.ahorra.clases.Menu;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MenuFragment#newInstance} factory method to
+ * Use the {@link Pantalla_PrincipalFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MenuFragment extends Fragment {
-
-    private final static int BOTONES[]= {R.id.frgMenImbInicio, R.id.frgMenImbMetas, R.id.frgMenImbAprender, R.id.frgMenImbHistorial};
-
+public class Pantalla_PrincipalFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +26,7 @@ public class MenuFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MenuFragment() {
+    public Pantalla_PrincipalFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +36,11 @@ public class MenuFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MenuFragment.
+     * @return A new instance of fragment Pantalla_PrincipalFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MenuFragment newInstance(String param1, String param2) {
-        MenuFragment fragment = new MenuFragment();
+    public static Pantalla_PrincipalFragment newInstance(String param1, String param2) {
+        Pantalla_PrincipalFragment fragment = new Pantalla_PrincipalFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,20 +61,6 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista = inflater.inflate(R.layout.fragment_menu, container, false);
-        ImageButton imbBoton;
-        for (int i = 0; i < BOTONES.length; i++) {
-            imbBoton = vista.findViewById(BOTONES[i]);
-            final int ID = i;
-            imbBoton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Activity activity = getActivity();
-                    ((Menu) activity).onClickMenu(ID);
-                }
-            });
-        }
-        return vista;
-
+        return inflater.inflate(R.layout.fragment_pantalla__principal, container, false);
     }
 }

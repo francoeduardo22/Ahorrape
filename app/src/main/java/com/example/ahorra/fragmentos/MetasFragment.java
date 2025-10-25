@@ -19,9 +19,6 @@ import com.example.ahorra.clases.Menu;
  * create an instance of this fragment.
  */
 public class MetasFragment extends Fragment {
-
-    private final static int BOTONES[] ={R.id.frgMenImbInicio, R.id.frgMenImbMetas, R.id.frgMenImbAprender, R.id.frgMenImbHistorial};
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -66,19 +63,7 @@ public class MetasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista = inflater.inflate(R.layout.fragment_metas, container, false);
-        ImageButton imgboton;
-        for (int i = 0; i < BOTONES.length; i++) {
-            imgboton = vista.findViewById(BOTONES[i]);
-            final int ID = i;
-            imgboton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Activity activity = getActivity();
-                    ((Menu) activity).onClickMenu(ID);
-                }
-            });
-        }
-        return vista;
+        return inflater.inflate(R.layout.fragment_metas, container, false);
+
     }
 }
