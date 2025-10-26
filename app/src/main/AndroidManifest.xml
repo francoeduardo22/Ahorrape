@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Ahorra">
         <activity
             android:name=".actividades.FragmentActivity"
-            android:exported="false" />
+            tools:ignore="MissingClass" />
         <activity
             android:name=".actividades.MetasActivity"
             android:exported="false" />
@@ -44,6 +44,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

@@ -176,6 +176,7 @@
             tools:ignore="MissingConstraints">
 
             <ImageButton
+                android:id="@+id/imgbtModulo1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/clase1"
@@ -195,6 +196,7 @@
             tools:ignore="MissingConstraints">
 
             <ImageButton
+                android:id="@+id/imgbtModulo2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/clase2"
@@ -212,6 +214,7 @@
             tools:ignore="MissingConstraints">
 
             <ImageButton
+                android:id="@+id/imgbtModulo3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/clase3"
