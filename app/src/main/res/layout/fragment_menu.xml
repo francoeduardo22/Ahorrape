@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:weightSum="4">
+        android:weightSum="5">
 
         <!-- INICIO -->
         <LinearLayout

@@ -19,6 +19,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.example.ahorra.fragmentos.PerfilFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 // --- FIN DE IMPORTS AÑADIDOS ---
 
@@ -49,11 +51,12 @@ public class PrincipalActivity extends AppCompatActivity
         });
 
         // prepara fragments
-        fragments = new Fragment[4];
+        fragments = new Fragment[5];
         fragments[0] = new Pantalla_PrincipalFragment();
         fragments[1] = new MetasFragment();
         fragments[2] = new AprenderFragment();
         fragments[3] = new HistorialFragment();
+        fragments[4] = new PerfilFragment();
 
         int id = getIntent().getIntExtra("id", 0);
         onClickMenu(id);
