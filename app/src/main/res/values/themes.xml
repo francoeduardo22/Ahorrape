@@ -13,4 +13,16 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.Ahorra.Card" parent="">
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="Theme.Ahorra.Divider" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#F3F4F6</item> <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
 </resources>

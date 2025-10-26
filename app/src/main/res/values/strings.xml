@@ -49,4 +49,33 @@
     <string name="bieLblSaludo">Bienvenido</string>
     <string name="Progreso_perol">35% de la academia completada</string>
     <string name="HistTxtBusqueda">Buscar transacción...</string>
+
+    <string name="anadir_ahorro_titulo">Añadir Ahorro a Meta</string>
+    <string name="anadir_ahorro_elegir_meta">Elige a qué meta quieres transferir</string>
+    <string name="anadir_ahorro_monto">Monto a Añadir</string>
+    <string name="anadir_ahorro_confirmar">Confirmar Ahorro</string>
+
+    <string name="anadir_ahorro_resumen_plantilla">Tu meta %1$s pasará a tener S/ %,.2f ahorrados.</string>
+
+
+
+    <string name="perfil_titulo">Mi Perfil y Configuración</string>
+    <string name="perfil_seccion_cuenta">Datos Personales y Cuenta</string>
+    <string name="perfil_usuario_ejemplo">Usuario Ejemplo</string>
+    <string name="perfil_email_ejemplo">usuario.ejemplo@email.com</string>
+    <string name="perfil_cambiar_pass">Cambiar Contraseña</string>
+    <string name="perfil_metodos_reg">Métodos de Registro</string>
+    <string name="perfil_eliminar_cuenta">Eliminar Cuenta</string>
+
+    <string name="perfil_seccion_seguridad">Seguridad y Datos Personales</string>
+    <string name="perfil_datos_encriptados">Datos Encriptados</string>
+    <string name="perfil_politica_priv">Política de Privacidad</string>
+    <string name="perfil_terminos_cond">Términos y Condiciones</string>
+    <string name="perfil_notificaciones">Notificaciones de Alerta</string>
+
+    <string name="perfil_seccion_ayuda">Ayuda y Soporte</string>
+    <string name="perfil_enviar_sug">Enviar Sugerencias/Reportar Error</string>
+
+    <string name="perfil_cerrar_sesion">Cerrar Sesión</string>
+
 </resources>

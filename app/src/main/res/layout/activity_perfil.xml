@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo2"
+    tools:context=".actividades.PerfilActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbarPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/fondo"
+        app:title="@string/perfil_titulo"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert"        app:navigationIconTint="@color/white" />
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorRojoPeligro"
+        android:text="@string/perfil_cerrar_sesion"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarPerfil"
+        android:layout_above="@id/btnCerrarSesion">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/perfil_seccion_cuenta"
+                android:textColor="@color/colorVerdeSeccion"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:elevation="4dp"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:src="@drawable/foto"
+                    android:layout_marginEnd="16dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/perfil_usuario_ejemplo"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/perfil_email_ejemplo"
+                        android:textColor="#666666"/>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnEditarPerfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Theme.Ahorra.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/item_perfil_opcion"
+                    android:id="@+id/opcionCambiarPass"/>
+
+                <View style="@style/Theme.Ahorra.Divider"/>
+
+                <include layout="@layout/item_perfil_opcion"
+                    android:id="@+id/opcionMetodos"/>
+
+                <View style="@style/Theme.Ahorra.Divider"/>
+
+                <include layout="@layout/item_perfil_opcion"
+                    android:id="@+id/opcionEliminar"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/perfil_seccion_seguridad"
+                android:textColor="@color/colorVerdeSeccion"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                style="@style/Theme.Ahorra.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/item_perfil_opcion"
+                    android:id="@+id/opcionEncriptados"/>
+
+                <View style="@style/Theme.Ahorra.Divider"/>
+
+                <include layout="@layout/item_perfil_opcion"
+                    android:id="@+id/opcionPolitica"/>
+
+                <View style="@style/Theme.Ahorra.Divider"/>
+
+                <include layout="@layout/item_perfil_opcion"
+                    android:id="@+id/opcionTerminos"/>
+
+                <View style="@style/Theme.Ahorra.Divider"/>
+
+                <include layout="@layout/item_perfil_opcion_switch"
+                    android:id="@+id/opcionNotificaciones"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/perfil_seccion_ayuda"
+                android:textColor="@color/colorVerdeSeccion"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                style="@style/Theme.Ahorra.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/item_perfil_opcion"
+                    android:id="@+id/opcionSugerencias"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
