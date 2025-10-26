@@ -43,6 +43,7 @@ public class PrincipalActivity extends AppCompatActivity implements Menu {
         onClickMenu(id);
     }
 
+
     @Override
     public void onClickMenu(int id) {
         FragmentManager fm = getSupportFragmentManager();

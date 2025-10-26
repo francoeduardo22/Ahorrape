@@ -48,4 +48,5 @@
     <string name="txtLblPreferencias">Preferencias</string>
     <string name="bieLblSaludo">Bienvenido</string>
     <string name="Progreso_perol">35% de la academia completada</string>
+    <string name="HistTxtBusqueda">Buscar transacción...</string>
 </resources>
