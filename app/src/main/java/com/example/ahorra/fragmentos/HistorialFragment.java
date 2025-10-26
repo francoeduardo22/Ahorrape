@@ -1,31 +1,44 @@
 package com.example.ahorra.fragmentos;
 
-import android.content.DialogInterface; // <-- IMPORT AÑADIDO
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog; // <-- IMPORT AÑADIDO
-import androidx.appcompat.widget.PopupMenu; // <-- IMPORT AÑADIDO
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager; // <-- AÑADIDO
+import androidx.recyclerview.widget.RecyclerView; // <-- AÑADIDO
 
 import android.view.LayoutInflater;
-import android.view.MenuItem; // <-- IMPORT AÑADIDO
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ahorra.actividades.HistorialAdapter; // <-- AÑADIDO
 import com.example.ahorra.R;
-// IMPORTS PARA EL CALENDARIO
-import com.google.android.material.datepicker.MaterialDatePicker; // <-- IMPORT AÑADIDO
-import java.text.SimpleDateFormat; // <-- IMPORT AÑADIDO
-import java.util.Date; // <-- IMPORT AÑADIDO
-import java.util.Locale; // <-- IMPORT AÑADIDO
+import com.example.ahorra.actividades.Transaccion; // <-- AÑADIDO
+
+// IMPORTS PARA EL CALENDARIO Y LISTAS
+import com.google.android.material.datepicker.MaterialDatePicker;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList; // <-- AÑADIDO
+import java.util.Date;
+import java.util.List; // <-- AÑADIDO
+import java.util.Locale;
 
 public class HistorialFragment extends Fragment {
 
     // ... (el resto de tu código mParam1, mParam2, etc. va aquí) ...
+
+    // Declarar las variables del RecyclerView y Adapter (AÑADIDO)
+    private RecyclerView historialRecyclerView;
+    private HistorialAdapter historialAdapter;
+    private List<Object> listaAgrupada;
+
 
     public HistorialFragment() {
         // Required empty public constructor
@@ -46,105 +59,124 @@ public class HistorialFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_historial, container, false);
     }
 
-    // ⭐ AQUÍ ESTÁ TODA LA LÓGICA DE CLICS ACTUALIZADA ⭐
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // --- 1. CONFIGURACIÓN DE FILTROS ---
 
         // Encontrar los TextViews por su ID
         TextView filtroMes = view.findViewById(R.id.filtro_mes);
         TextView filtroCategoria = view.findViewById(R.id.filtro_categoria);
         TextView filtroTipo = view.findViewById(R.id.filtro_tipo);
 
-        // =======================================================
-        // 1. Listener para "Mes" (Usando un DatePicker)
-        // =======================================================
+        // Listener para "Mes"
         filtroMes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Crear el constructor del DatePicker
                 MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
                 builder.setTitleText("Seleccionar Mes y Año");
-                // Iniciar en el mes actual
                 builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds());
 
                 MaterialDatePicker<Long> datePicker = builder.build();
 
-                // Listener para cuando el usuario presiona "OK"
                 datePicker.addOnPositiveButtonClickListener(selection -> {
-                    // 'selection' es la fecha en milisegundos (timestamp)
                     Date date = new Date(selection);
-                    // Formateamos la fecha a "Julio 2025"
                     SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", new Locale("es", "ES"));
                     String fechaFormateada = sdf.format(date);
-
-                    // Actualizamos el texto del "botón"
                     filtroMes.setText(fechaFormateada);
-
                     // TODO: Aquí irá tu lógica para filtrar la lista por esa fecha
                 });
-
-                // Mostrar el DatePicker
                 datePicker.show(getParentFragmentManager(), "DATE_PICKER_TAG");
             }
         });
 
-        // =======================================================
-        // 2. Listener para "Categoría" (Usando un AlertDialog)
-        // =======================================================
+        // Listener para "Categoría"
         filtroCategoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lista de categorías (puedes cargarlas desde tu BD)
                 final String[] categorias = {"Todas", "Comida", "Transporte", "Salario", "Compras", "Entretenimiento"};
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Selecciona una Categoría");
-
-                // Asignar la lista al diálogo y un listener
                 builder.setItems(categorias, (dialog, which) -> {
-                    // 'which' es el índice (posición) del item clickeado
                     String categoriaSeleccionada = categorias[which];
-
-                    // Actualizamos el texto del "botón"
                     filtroCategoria.setText(categoriaSeleccionada);
-
                     // TODO: Aquí irá tu lógica para filtrar la lista por esa categoría
                 });
-
-                // Crear y mostrar el diálogo
                 builder.create().show();
             }
         });
 
-        // =======================================================
-        // 3. Listener para "Tipo" (Usando un PopupMenu)
-        // =======================================================
+        // Listener para "Tipo"
         filtroTipo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Crear la instancia de PopupMenu, anclada al botón 'filtroTipo'
                 PopupMenu popupMenu = new PopupMenu(getContext(), filtroTipo);
-
-                // Añadir las opciones al menú
                 popupMenu.getMenu().add("Todos");
                 popupMenu.getMenu().add("Ingreso");
                 popupMenu.getMenu().add("Gasto");
 
-                // Listener para cuando se selecciona un item
                 popupMenu.setOnMenuItemClickListener(item -> {
                     String tipoSeleccionado = item.getTitle().toString();
-
-                    // Actualizamos el texto del "botón"
                     filtroTipo.setText(tipoSeleccionado);
-
-                    // TODO: Aquí irá tu lógica para filtrar por Ingreso o Gasto
+                    //TODO: Aquí irá tu lógica para filtrar por Ingreso o Gasto
                     return true;
                 });
-
-                // Mostrar el menú
                 popupMenu.show();
             }
         });
+
+
+        // --- 2. CONFIGURACIÓN DEL RECYCLERVIEW (AÑADIDO) ---
+
+        // 1. Encontrar el RecyclerView del XML
+        historialRecyclerView = view.findViewById(R.id.historial_recyclerview);
+        historialRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // 2. Cargar los datos y agruparlos
+        cargarDatosDeEjemplo();
+
+        // 3. Crear y conectar el Adapter
+        historialAdapter = new HistorialAdapter(getContext(), listaAgrupada);
+        historialRecyclerView.setAdapter(historialAdapter);
+    }
+
+
+    // =======================================================
+    // MÉTODO DE DATOS DE EJEMPLO (AÑADIDO)
+    // =======================================================
+    // EN EL FUTURO, ESTOS DATOS VENDRÁN DE TU BASE DE DATOS (ROOM).
+    private void cargarDatosDeEjemplo() {
+        listaAgrupada = new ArrayList<>();
+
+        // Simulamos la lista que vendría de la base de datos
+        // (En la vida real, vendrían ya ordenados por fecha)
+        // (Asegúrate de tener los drawables como R.drawable.ic_comida, etc.)
+        List<Transaccion> transaccionesDB = new ArrayList<>();
+        transaccionesDB.add(new Transaccion("Comida", "10:30 AM", 25.00, "Gasto", R.drawable.ic_comida, new Date(1715781000000L))); // 15 de Mayo 2024
+        transaccionesDB.add(new Transaccion("Transporte", "12:45 PM", 5.00, "Gasto", R.drawable.ic_transporte, new Date(1715781000000L))); // 15 de Mayo 2024
+        transaccionesDB.add(new Transaccion("Salario", "2:15 PM", 1500.00, "Ingreso", R.drawable.ic_salario, new Date(1715781000000L))); // 15 de Mayo 2024
+
+        transaccionesDB.add(new Transaccion("Compras", "9:00 AM", 120.00, "Gasto", R.drawable.ic_compras, new Date(1715694600000L))); // 14 de Mayo 2024
+        transaccionesDB.add(new Transaccion("Entretenimiento", "11:00 AM", 40.00, "Gasto", R.drawable.ic_entretenimiento, new Date(1715694600000L))); // 14 de Mayo 2024
+
+        // --- LÓGICA DE AGRUPACIÓN POR FECHA ---
+        SimpleDateFormat sdf = new SimpleDateFormat("dd 'DE' MMMM", new Locale("es", "ES"));
+        String fechaActual = "";
+
+        for (Transaccion t : transaccionesDB) {
+            String fechaFormateada = sdf.format(t.getFecha()).toUpperCase();
+
+            // Si la fecha de esta transacción es diferente a la anterior...
+            if (!fechaFormateada.equals(fechaActual)) {
+                //...añadimos el "molde" de fecha (el String) a la lista.
+                listaAgrupada.add(fechaFormateada);
+                fechaActual = fechaFormateada; // Actualizamos la "fecha actual"
+            }
+
+            // Añadimos el "molde" de transacción (el Objeto) a la lista.
+            listaAgrupada.add(t);
+        }
     }
 }
